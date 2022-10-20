@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
   });
 });
 
-// Routes.
+// Add routes.
 app.use('/api', routes);
 
 // send 404 if no other route matched
@@ -47,11 +47,6 @@ app.use((err, req, res, next) => {
 // set our port
 app.set('port', process.env.PORT || 5000);
 
-// start listening on our port
-const server = app.listen(app.get('port'), () => {
-  console.log(`Express server is listening on port ${server.address().port}`);
-});
-
 // Test the database connection.
 (async () => {
   try {
@@ -61,3 +56,8 @@ const server = app.listen(app.get('port'), () => {
     console.error('Unable to connect to the database:', error);
   }
 })();
+
+// start listening on our port
+const server = app.listen(app.get('port'), () => {
+  console.log(`Express server is listening on port ${server.address().port}`);
+});
